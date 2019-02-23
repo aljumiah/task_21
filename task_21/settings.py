@@ -26,7 +26,7 @@ SECRET_KEY = 'tnvhv(22@t1#1!f9$&6gl#0-&9(symuxb$=x_2h6zkg*tdi4iy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','207.154.208.66']
+ALLOWED_HOSTS = ['127.0.0.1','68.183.216.45']
 
 
 # Application definition
@@ -82,12 +82,24 @@ WSGI_APPLICATION = 'task_21.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'django',
+            'USER':'django',
+            'PASSWORD':'9f321ff09cbd5cfd7532f56bdbf010c9',
+            'HOST':'localhost',
+            'PORT':'',
+        }
+    }
 
 
 # Password validation
